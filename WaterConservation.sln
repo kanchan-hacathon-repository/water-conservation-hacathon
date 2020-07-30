@@ -1,0 +1,75 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.1062
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WaterConservation.UI", "WaterConservation\WaterConservation.UI.csproj", "{197E17B1-20C2-4C47-95FC-374BED6C43AC}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Application", "Application", "{8F5ADB8C-1B4B-471D-9142-0D6F454C74E4}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Components", "Components", "{3083C995-269F-4DC1-A9BA-DEDC445F6578}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WaterConservation.BusinessLogic", "WaterConservation.BusinessLogic\WaterConservation.BusinessLogic.csproj", "{8CF3963F-7A94-4873-8E67-22EB3B3AEB4A}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WaterConservation.DataAccess", "WaterConservation.DataAccess\WaterConservation.DataAccess.csproj", "{3D575C1E-9E36-4C7A-954E-B816286474DE}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WaterConservation.Entities", "WaterConservation.Entities\WaterConservation.Entities.csproj", "{019772F3-11DE-463E-B06E-9F3D28AA1DAE}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{197E17B1-20C2-4C47-95FC-374BED6C43AC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{197E17B1-20C2-4C47-95FC-374BED6C43AC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{197E17B1-20C2-4C47-95FC-374BED6C43AC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{197E17B1-20C2-4C47-95FC-374BED6C43AC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8CF3963F-7A94-4873-8E67-22EB3B3AEB4A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8CF3963F-7A94-4873-8E67-22EB3B3AEB4A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8CF3963F-7A94-4873-8E67-22EB3B3AEB4A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8CF3963F-7A94-4873-8E67-22EB3B3AEB4A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3D575C1E-9E36-4C7A-954E-B816286474DE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3D575C1E-9E36-4C7A-954E-B816286474DE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3D575C1E-9E36-4C7A-954E-B816286474DE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3D575C1E-9E36-4C7A-954E-B816286474DE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{019772F3-11DE-463E-B06E-9F3D28AA1DAE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{019772F3-11DE-463E-B06E-9F3D28AA1DAE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{019772F3-11DE-463E-B06E-9F3D28AA1DAE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{019772F3-11DE-463E-B06E-9F3D28AA1DAE}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{197E17B1-20C2-4C47-95FC-374BED6C43AC} = {8F5ADB8C-1B4B-471D-9142-0D6F454C74E4}
+		{8CF3963F-7A94-4873-8E67-22EB3B3AEB4A} = {3083C995-269F-4DC1-A9BA-DEDC445F6578}
+		{3D575C1E-9E36-4C7A-954E-B816286474DE} = {3083C995-269F-4DC1-A9BA-DEDC445F6578}
+		{019772F3-11DE-463E-B06E-9F3D28AA1DAE} = {3083C995-269F-4DC1-A9BA-DEDC445F6578}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {12483972-4992-484F-A982-88A7B2D6A821}
+	EndGlobalSection
+	GlobalSection(TeamFoundationVersionControl) = preSolution
+		SccNumberOfProjects = 5
+		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
+		SccTeamFoundationServer = https://dev.azure.com/soumikwaterconservation
+		SccLocalPath0 = .
+		SccProjectUniqueName1 = WaterConservation\\WaterConservation.UI.csproj
+		SccProjectTopLevelParentUniqueName1 = WaterConservation.sln
+		SccProjectName1 = WaterConservation
+		SccLocalPath1 = WaterConservation
+		SccProjectUniqueName2 = WaterConservation.BusinessLogic\\WaterConservation.BusinessLogic.csproj
+		SccProjectTopLevelParentUniqueName2 = WaterConservation.sln
+		SccProjectName2 = WaterConservation.BusinessLogic
+		SccLocalPath2 = WaterConservation.BusinessLogic
+		SccProjectUniqueName3 = WaterConservation.DataAccess\\WaterConservation.DataAccess.csproj
+		SccProjectTopLevelParentUniqueName3 = WaterConservation.sln
+		SccProjectName3 = WaterConservation.DataAccess
+		SccLocalPath3 = WaterConservation.DataAccess
+		SccProjectUniqueName4 = WaterConservation.Entities\\WaterConservation.Entities.csproj
+		SccProjectTopLevelParentUniqueName4 = WaterConservation.sln
+		SccProjectName4 = WaterConservation.Entities
+		SccLocalPath4 = WaterConservation.Entities
+	EndGlobalSection
+EndGlobal

@@ -1,0 +1,253 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+
+<!-- ======= Header ======= -->
+<header id="header" class="header">
+    <div class="container">
+
+        <div id="logo" class="pull-left">
+        </div>
+
+        <nav id="nav-menu-container">
+            <ul class="nav-menu">
+                <li><a href="~/Home">Home</a></li>
+                <li><a href="~/Home#news">News Feed</a></li>
+                <li><a href="~/NormalHousehold">Water Harvest</a></li>
+                <li><a href="~/WaterFootprint">Water Footprint</a></li>
+                <li><a href="~/Prediction">Water Prediction Model</a></li>
+                <li class="menu-has-children">
+                    <a href="#">FAQs</a>
+                    <ul>
+                        <li><a href="~/Facts">Facts</a></li>
+                        <li><a href="~/Facts/WaterBorneDisease">Water Borne Disease</a></li>
+                    </ul>
+                </li>
+                <li><a href="~/Home#team">Team</a></li>
+            </ul>
+        </nav><!-- #nav-menu-container -->
+    </div>
+</header><!-- End Header -->
+
+<main id="main">
+    <!-- ======= Rain Harvest ======= -->
+    <section id="rainharvest">
+        <div class="container" data-aos="fade-up">
+            <div class="row about-container">
+                <div class="col-lg-12 content order-lg-1 order-2">
+                    <h1></h1>
+                    <div class="section-header">
+                        <h3 class="section-title">Rain Water Harvest</h3>
+                        <p class="section-description">
+                            Have you ever wondered how much rain falls on your roof during a typical rain storm?
+                            Use this simple rain harvesting calculator to find out. You will be amazed at how much
+                            water can be collected from your roof (or any other surface) during even the shortest of rain storms.
+                            Why not collect and store this wonderful natural resource and put it to good use later to water your organic garden?
+                        </p>
+                    </div>
+                    <div class="col-lg-12 content order-lg-1 order-2">
+                        <table id="harvestcalculator" class="table table-striped">
+                            <thead>
+                                <tr>
+                                    <th scope="col" colspan="2" style="text-align: center;">Harvest Calculator</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Catchment area(sq ft)</td>
+                                    <td>
+                                        <input id="txtcatchment-area" name="txtcatchment-area" type="text" placeholder="e.g. 500" />
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Rainfall(inches)</td>
+                                    <td>
+                                        <input id="txtrainfall" name="txtrainfall" type="text" placeholder="e.g. 2" />
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Efficiency(%)</td>
+                                    <td>
+                                        <input id="txtefficiency" name="txtefficiency" type="text" placeholder="e.g. 75" />
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>collection points(#)</td>
+                                    <td>
+                                        <input id="txtcollection-points" name="txtcollection-points" type="text" placeholder="e.g. 1" />
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Total Harvest(Gallons)</td>
+                                    <td>
+                                        <h4><span id="lblharvest-result" class="label label-default">0</span></h4>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td colspan="2">
+                                        <input id="btn-harvest-calculations" type="button" style="display: block; margin: auto;" value="Calculate Harvest" class="btn btn-success" />
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="col-lg-12 content order-lg-1 order-2">
+                        <canvas id="myChart"></canvas>
+                    </div>
+
+                </div>
+
+                <div class="col-lg-6 background order-lg-2 order-1" data-aos="fade-left" data-aos-delay="100"></div>
+            </div>
+
+        </div>
+    </section>
+    <!-- ======= End Rain Harvest ======= -->
+
+    <div class="modal"></div>
+</main><!-- End #main -->
+<!-- ======= Footer ======= -->
+<footer id="footer"></footer><!-- End Footer -->
+
+<a href="#" class="back-to-top"><i class="fa fa-chevron-up"></i></a>
+
+<script typeof="text/javascript">
+    $body = $("body");
+
+    $("#btn-harvest-calculations").click(function (e) {
+        e.preventDefault();
+        handleSubmit();
+    });
+
+    function handleSubmit() {
+        var catchmentArea = $("#txtcatchment-area").val();
+        var rainfall = $("#txtrainfall").val();
+        var efficiency = $("#txtefficiency").val();
+        var collectionPoints = $("#txtcollection-points").val();
+
+        if (validateInput(catchmentArea, rainfall, efficiency, collectionPoints)) {
+            calculateHarvest(catchmentArea, rainfall, efficiency, collectionPoints);
+        }
+        else {
+            $("#lblharvest-result").text('');
+        }
+    }
+
+    function validateInput(catchmentArea, rainfall, efficiency, collectionPoints) {
+        if (!$.isNumeric(catchmentArea) || !checkNumber(catchmentArea)) {
+            alert('please enter a positive number for catchment area');
+            return false;
+        }
+        if (!$.isNumeric(rainfall) || !checkNumber(rainfall)) {
+            alert('please enter a positive number for rainfall');
+            return false;
+        }
+        if (!$.isNumeric(efficiency) || !checkNumber(efficiency)) {
+            alert('please enter a positive number for efficiency');
+            return false;
+        }
+        if (!$.isNumeric(collectionPoints) || !checkNumber(collectionPoints)) {
+            alert('please enter a positive number for collection points');
+            return false;
+        }
+        return true;
+    }
+
+    function checkNumber(sNum) {
+        var pattern = /^\d+(\.\d{1,2})?$/;
+        return (pattern.test(sNum));
+    }
+
+    function calculateHarvest(catchmentArea, rainfall, efficiency, collectionPoints) {
+
+        $.ajax({
+            url: 'NormalHousehold/HarvestCalculator',
+            dataType: 'json',
+            data: { catchmentArea: catchmentArea, rainfall: rainfall, efficiency: efficiency, collectionPoints: collectionPoints },
+            type: 'POST',
+            beforeSend: function () { $body.addClass("loading"); },
+            //complete: function () { $body.removeClass("loading"); },
+            success: function (data) {
+                //alert(data);
+                setTimeout(function () {
+                    $("#lblharvest-result").text(data);
+                    $body.removeClass("loading");
+                }, 500);
+            },
+            error: function (xhr, status, error) {
+                var errorMessage = xhr.status + ': ' + xhr.statusText;
+                console.log('Error - ' + errorMessage);
+                $body.removeClass("loading");
+            }
+        });
+
+        $.ajax({
+            url: 'NormalHousehold/LoadHouseholdHarvestChart',
+            dataType: 'json',
+            data: { catchmentArea: catchmentArea, rainfall: rainfall, efficiency: efficiency, collectionPoints: collectionPoints },
+            type: 'GET',
+            beforeSend: function () { $body.addClass("loading"); },
+            complete: function () { $body.removeClass("loading"); },
+            success: function (data) {
+                var resultArray = JSON.parse(data);
+                var rainfallArray = [];
+                var harvestArray = [];
+                $.each(resultArray, function (index, item) {
+                    rainfallArray.push(item.RainFall + " inches");
+                    harvestArray.push(item.Harvest);
+                });
+                setTimeout(function () {
+                    loadChart(rainfallArray, harvestArray);
+                    $body.removeClass("loading");
+                }, 500);
+            },
+            error: function (xhr, status, error) {
+                var errorMessage = xhr.status + ': ' + xhr.statusText;
+                console.log('Error - ' + errorMessage);
+                $body.removeClass("loading");
+            }
+        });
+    }
+
+    function loadChart(rainfallArray, harvestArray) {
+        var ctx = document.getElementById("myChart").getContext('2d');
+        var myChart = new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: rainfallArray,
+                datasets: [{
+                    label: 'Harvested Gallons',
+                    data: harvestArray,
+                    backgroundColor: [
+                        'rgba(255, 99, 132, 0.2)',
+                        'rgba(54, 162, 235, 0.2)',
+                        'rgba(255, 206, 86, 0.2)',
+                        'rgba(75, 192, 192, 0.2)',
+                        'rgba(153, 102, 255, 0.2)',
+                        'rgba(255, 159, 64, 0.2)'
+                    ],
+                    borderColor: [
+                        'rgba(255,99,132,1)',
+                        'rgba(54, 162, 235, 1)',
+                        'rgba(255, 206, 86, 1)',
+                        'rgba(75, 192, 192, 1)',
+                        'rgba(153, 102, 255, 1)',
+                        'rgba(255, 159, 64, 1)'
+                    ],
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                scales: {
+                    yAxes: [{
+                        ticks: {
+                            beginAtZero: true
+                        }
+                    }]
+                }
+            }
+        });
+    }
+
+</script>

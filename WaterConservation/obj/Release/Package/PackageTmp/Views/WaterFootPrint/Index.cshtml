@@ -1,0 +1,483 @@
+﻿
+<script type='text/javascript' src="//www.easycalculation.com/jquery.js"></script>
+<script language=javascript src="//www.easycalculation.com/numeric.js"></script>
+<script type='text/javascript'>
+    var fall = 2.7;
+    var fsome = 1.4;
+    var sall = 2.9;
+    var ssome = 1.5;
+    var tall = 10.7;
+    var tsome = 5.4;
+    var sconst = 69;
+    var cconst = 41;
+    var meat = 342;
+    var poultry = 89;
+    var fish = 109;
+    var milk = 55;
+    var diet = 1056;
+    var transport = 622;
+    var short = 150;
+    var medium = 1050;
+    var long = 2400;
+
+    function showDiv(opt) {
+        if (opt == 's') {
+            $('#cs').show();
+        }
+        else {
+            $('#cs').hide();
+        }
+
+    }
+
+    $(document).ready(function () {
+        $('#use').hide();
+        $('#use1').hide();
+        $('#use2').hide();
+        $('#use3').hide();
+        $('.successresult').hide();
+    });
+    function disp(org) {
+
+        if (org == 69) {
+            $('#use').show();
+            $('#use1').show();
+            $('#use2').show();
+            $('#use3').show();
+        }
+        else {
+            $('#use').hide();
+            $('#use1').hide();
+            $('#use2').hide();
+            $('#use3').hide();
+        }
+    }
+
+    function loadhide(dup) {
+        if (dup == 0) {
+            $('#load').hide();
+        }
+        else {
+            $('#load').show();
+        }
+    }
+    function calculateResult() {
+
+        var isInvalid = false;
+
+        $.each($('input:required'), function () {
+            var isRequiredValueEmpty = (this == null || this.value === '' || this.value < 0);
+            if (isRequiredValueEmpty) {
+                this.classList.add('is-invalid');
+
+            } else {
+                this.classList.remove('is-invalid');
+            }
+            isInvalid = isInvalid && isRequiredValueEmpty;
+        });
+        if (isInvalid) {
+            $('.successresult').hide();
+        }
+        else {
+
+            $('.successresult').show();
+            year = $('#sel').val();
+            fval = $('#faucet').val();
+            tval = $('#toilet').val();
+            sval = $('#shower').val();
+            shwr = $('#i1').val();
+            minute = $('#i2').val();
+            bath = $('#i3').val();
+            flushval = $('#flush').val();
+            machine = $('#washing').val();
+            loads = $('#i4').val();
+            dish = $('#dishwash').val();
+            washType = $('#o3').val();
+            washTime = $('#o4').val();
+            carWash = 0;
+            if (washType == 'cgw') {
+                if (washTime == 'd') {
+                    carWash = 25;
+                }
+                else if (washTime == 'w') {
+                    carWash = 4;
+                }
+                else if (washTime == 'm') {
+                    carWash = 1;
+                }
+            }
+            else if (washType == 'cdt') {
+                if (washTime == 'd') {
+                    carWash = 15;
+                }
+                else if (washTime == 'w') {
+                    carWash = 2;
+                }
+            }
+            else {
+                if (washTime == 'd') {
+                    carWash = 4;
+                }
+                else if (washTime == 'w') {
+                    carWash = 1;
+                }
+            }
+            papper = parseFloat($('#r1').val());
+            plastic = parseFloat($('#r2').val());
+            bottles = parseFloat($('#r3').val());
+            recycles = papper + plastic + bottles;
+            if (year == 69) {
+                first = year;
+                fval = first - fval - tval - sval;
+                shwer = ((shwr * minute * 2) / 7) - 11.6;
+                bathval = bath * 10;
+                bathvalue = parseFloat(fval) + parseFloat(shwer) + parseFloat(bathval);
+            }
+            else {
+                second = year;
+                shwer = ((shwr * minute * 1.5) / 7) - 8.7;
+                bathval = bath * 10;
+                bathvalue = parseFloat(second) + parseFloat(shwer) + parseFloat(bathval);
+            }
+            flushing = bathvalue - flushval;
+            (loads != '' && loads >= 0) ? (loadval = ((machine * loads) / 7) - 12.9) : loadval = 0;
+
+            finalval = flushing + loadval + dish;
+            finalval = Math.round(1000 * finalval) / 1000;
+
+            $('#hme').val(finalval);
+            var met = $('#i9').val();
+            var meatval1 = (((met - 7) * meat) / 7);
+            meatval = parseFloat(meatval1) + parseFloat(diet);
+            var poul = $('#i10').val();
+            var poulval1 = (((poul - 7) * poultry) / 7);
+            poulval = parseFloat(meatval) + parseFloat(poulval1);
+            var fsh = $('#i11').val();
+            var fshval1 = (((fsh - 5) * fish) / 7);
+            fshval = parseFloat(fshval1) + parseFloat(poulval);
+            var mlk = $('#i12').val();
+            var mlkval1 = ((mlk - 1) * 55);
+            mlkval = parseFloat(mlkval1) + parseFloat(fshval);
+            var cofe = $('#i13').val();
+            var cofeval1 = ((cofe - 1) * 55);
+            cofeval = parseFloat(cofeval1) + parseFloat(mlkval);
+            $('#dit').val(Math.round(cofeval));
+
+
+            outDoors = parseFloat(carWash) + recycles;
+
+            $('#od').val(easyRoundOf(outDoors, 4));
+            hme = $('#hme').val();
+            dit = $('#dit').val();
+            tots = parseFloat(outDoors) + parseFloat(hme) + parseFloat(dit);
+            $('#tots').val(easyRoundOf(tots, 4));
+
+            var ctxP = document.getElementById("pieChart").getContext('2d');
+            var footPrintChart = new Chart(ctxP, {
+                type: 'pie',
+                data: {
+                    labels: ["Outdoor", "Personal Needs", "Diet"],
+                    datasets: [{
+                        data: [parseFloat(outDoors), parseFloat(hme), parseFloat(dit)],
+                        backgroundColor: ["#F7464A", "#008000", "#FDB45C"],
+                        hoverBackgroundColor: ["#FF5A5E", "#5AD3D1", "#FFC870"]
+                    }]
+                },
+                options: {
+                    responsive: true
+                }
+            });
+
+        }
+    }
+    function checnum(elem) {
+        if (elem == null || elem.value === '' || elem.value < 0) {
+            elem.classList.add('is-invalid');
+        } else {
+            elem.classList.remove('is-invalid')
+        }
+    }
+    function easyRoundOf(value, decima) {
+        if (isNaN(value)) {
+            return 0;
+        } else {
+            decima = Math.pow(10, parseFloat(decima));
+            var rndvalus = Math.round(parseFloat(value) * decima) / decima;
+            if (isNaN(rndvalus)) {
+                return 0;
+            } else {
+                return rndvalus;
+            }
+        }
+    }
+    function rst() {
+        $.each($('input:required'), function () {
+            this.value = '';
+            this.classList.remove('is-invalid');
+        });
+        //$.each($('select'), function () {
+        //    this.prop('selectedIndex', 0);
+        //});
+        $('.successresult').hide();
+    }
+</script>
+
+@{
+    /**/
+
+    ViewBag.Title = "Index";
+}
+
+<!-- ======= Header ======= -->
+<header id="header" class="header">
+    <div class="container">
+
+        <div id="logo" class="pull-left">
+        </div>
+
+        <nav id="nav-menu-container">
+            <ul class="nav-menu">
+                <li><a href="~/Home">Home</a></li>
+                <li><a href="~/Home#news">News Feed</a></li>
+                <li><a href="~/NormalHousehold">Water Harvest</a></li>
+                <li><a href="~/WaterFootprint">Water Footprint</a></li>
+                <li><a href="~/Prediction">Water Prediction Model</a></li>
+                <li class="menu-has-children">
+                    <a href="#">FAQs</a>
+                    <ul>
+                        <li><a href="~/Facts">Facts</a></li>
+                        <li><a href="~/Facts/WaterBorneDisease">Water Borne Disease</a></li>
+                    </ul>
+                </li>
+                <li><a href="~/Home#team">Team</a></li>
+            </ul>
+        </nav>
+    </div>
+</header><!-- End Header -->
+<main id="main">
+    <!-- ======= Water Footprint ======= -->
+    <section id="WaterFootprint">
+        <div class="container aos-init aos-animate" data-aos="fade-up">
+            <div class="row about-container">
+                <div class="col-lg-12 content order-lg-1 order-2">
+                    <div class="section-header">
+                        <h1 class="section-title">Calculate your footprint</h1>
+                        <p>
+                            Personal water footprint is the measurement to the water required to produce the goods and services consumed by that person, which includes all of the daily tasks
+                            that involve water consumption, such as <b>personal hygiene, washing clothes, buying goods and services, cooking, drinking etc </b>
+                        </p>
+                    </div>
+                    <div class="icon-box">
+                        <p class="description">
+                            Please take your time and provide the inputs to calculate water footprint to assess your own unique water footprint. The calculations are based on the water requirements of the products derived from its manufacturing process
+                        </p>
+                        <form name="first" novalidate>
+                            <div class="form-row">
+                                <div class="form-group col-md-6">
+                                    <label>When your house was built</label>
+                                    <select id="sel" onclick="disp(this.value)" class="form-control">
+                                        <option value="41">After 1994</option>
+                                        <option value="69">Before 1994</option>
+                                    </select>
+                                </div>
+
+                                <div class="form-group col-md-6">
+                                    <label>Does your household use a dishwasher?</label>
+                                    <select id="dishwash" class="form-control">
+                                        <option value="2">Yes</option>
+                                        <option value="3">No</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-group" id="use">
+                                <label>Have you replaced any of the following?</label>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group col-md-4" id="use1">
+                                    <label>Toilets</label>
+                                    <select id="toilet" class="form-control"><option value="10.7">All</option><option value="5.4">Some</option><option value="0">None</option></select>
+                                </div>
+                                <div class="form-group col-md-4" id="use2">
+                                    <label>Showers</label>
+                                    <select id="shower" class="form-control"><option value="2.9">All</option><option value="1.5">Some</option><option value="0">None</option></select>
+                                </div>
+                                <div class="form-group col-md-4" id="use3">
+                                    <label>Faucets</label>
+                                    <select class="form-control" id="faucet"><option value="2.7">All</option><option value="1.4">Some</option><option value="0">None</option></select>
+                                </div>
+                            </div>
+
+                            <div class="form-row">
+                                <div class="form-group col-md-6">
+                                    <label>Showers/Week</label><input required class="form-control" type="tel" onblur="checnum(this)" id="i1">
+                                </div>
+                                <div class="form-group col-md-6">
+                                    <label>Minutes to shower</label> <input required class="form-control" type="tel" onblur="checnum(this)" id="i2">
+                                </div>
+                            </div>
+
+                            <div class="form-row">
+                                <div class="form-group col-md-6">
+                                    <label>Baths instead of showers/Week</label> <input required class="form-control" type="tel" onblur="checnum(this)" id="i3">
+                                </div>
+                                <div class="form-group col-md-6">
+                                    <label>Do you flush when you pee?</label> <select class="form-control" id="flush"><option value="0">Yes</option><option value="4.8">Sometimes</option><option value="10.5">No</option></select>
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group col-md-6">
+                                    <label>Kind of Washing /machine</label> <select class="form-control" id="washing" onclick="loadhide(this.value)"><option value="20">Front Loading</option><option value="40">Top Loading</option><option value="20">Top Loading(Water and Energy Efficient)</option><option value="0">None</option></select>
+                                </div>
+                                <div class="form-group col-md-6" id="load">
+                                    <label>Loads/Week</label><input class="form-control" type="tel" onblur="checnum(this)" id="i4">
+                                </div>
+                            </div>
+                            <h4 class="form-row">Outdoor</h4>
+                            <div class="form-row">
+                                <div class="form-group col-md-12">
+                                    <label>Do you have a greywater system in Home.?</label> <select class="form-control" id=o1>
+                                        <option value="-1">Yes</option>
+                                        <option value="0">No</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="form-row">
+                                <div class="form-group col-md-12">
+                                    <label>Do you have a rain barrel system in Home.?</label><select class="form-control" id=o2>
+                                        <option value="-1">Yes</option>
+                                        <option value="0">No</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group col-md-12">
+                                    <label>Do you have a car.?</label><select class="form-control" id="o2" onchange="showDiv(this.value)">
+                                        <option value="s">Yes</option>
+                                        <option value="n">No</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="form-row" id="cs">
+
+                                <label class="form-group col-md-4">
+                                    How do you wash car.?
+                                </label>
+                                <div class="form-group col-md-4">
+                                    <select class="form-control" id=o3>
+                                        <option value="cgw">Garden</option>
+                                        <option value="cdt">Drive Through Car Wash</option>
+                                        <option value="css">Self service car wash</option>
+                                    </select>
+                                </div>
+                                <div class="form-group col-md-4">
+                                    <select class="form-control" id=o4>
+                                        <option value="d">Daily</option>
+                                        <option value="w">Weekly</option>
+                                        <option value="m">Monthly</option>
+                                    </select>
+                                </div>
+
+                            </div>
+                            <h4 class="form-row">Recycle</h4>
+                            <div class="form-row">
+                                <div class="form-group col-md-6">
+                                    <label>Do you recycle bottles and cans?</label> <select class="form-control" id=r3>
+                                        <option value="-1">All</option>
+                                        <option value="0">Some</option>
+                                        <option value="0">No</option>
+                                    </select>
+                                </div>
+                                <div class="form-group col-md-3">
+
+                                    <label>Do you recycle papers?</label> <select class="form-control" id=r1>
+                                        <option value="-4">All</option>
+                                        <option value="-2">Some</option>
+                                        <option value="0">No</option>
+                                    </select>
+                                </div>
+                                <div class="form-group col-md-3">
+                                    <label>Do you recycle plastic.?</label><select class="form-control" id=r2>
+                                        <option value="-12">All</option>
+                                        <option value="-6">Some</option>
+                                        <option value="0">No</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <h4 class="form-row">Diet</h4>
+
+                            <div class="form-row">
+                                <div class="form-group col-md-6">
+                                    <label>Meat</label><span class="width_80"><input required class="form-control" type="tel" onblur="checnum(this)" id=i9></span><span> Servings Weekly</span>
+                                </div>
+
+                                <div class="form-group col-md-6">
+                                    <label> Poultry</label><span><input required class="form-control" type="tel" onblur="checnum(this)" id=i10></span><span> Servings Weekly</span>
+                                </div>
+
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group col-md-4">
+                                    <label> Fish</label><span><input required class="form-control" type="tel" onblur="checnum(this)" id=i11></span><span> Servings Weekly</span>
+                                </div>
+                                <div class="form-group col-md-4">
+                                    <label> Milk</label><span><input required class="form-control" type="tel" onblur="checnum(this)" id=i12></span><span> Cup Daily</span>
+                                </div>
+                                <div class="form-group col-md-4">
+                                    <label> Coffee</label><span><input required class="form-control" type="tel" onblur="checnum(this)" id=i13></span><span> Cup Daily</span>
+                                </div>
+                            </div>
+
+                            <div class="form-row">
+                                <div class="form-group col-md-4">
+                                    <input class="form-control form-group col-md-4 btn-dark" type="button" value="Calculate" onclick="calculateResult()" id="b1" />
+                                </div>
+                                <div class="form-group col-md-4">
+                                    <input class="form-control form-group col-md-4 btn btn-outline-dark" type="reset" onclick="rst()" value="Reset" />
+                                </div>
+
+                            </div>
+                                <div class="bg-light successresult">
+                                    <div class="form-row">
+                                        <div class="form-group col-md-6">
+                                            <label> Water consumed for diet</label> <span><input class="form-control" type="text" id=dit readonly></span><span>gallons</span>
+                                        </div>
+                                        <div class="form-group col-md-6">
+                                            <label> Daily Water consumption by human for personal needs</label><span class="width_100"><input class="form-control" type="text" id=hme readonly></span><span>gallons</span>
+                                        </div>
+                                    </div>
+                                    <div class="form-row">
+
+                                        <div class="form-group col-md-6">
+                                            <label> Water consumed for Outdoor & Recycle </label> <span class="width_100"><input class="form-control" type="text" id=od readonly></span><span>gallons</span>
+                                        </div>
+                                        <div class="form-group col-md-6">
+                                            <label> Total Water Consumed</label> <span class="width_100"><input class="form-control" type="tel" id=tots readonly></span><span>gallons</span>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-row">
+                                        <canvas id="pieChart"></canvas>
+                                    </div>
+                                </div>
+                                <div class="form-row">
+                                    <div class="form-group col-md-12">
+                                        <p><b>Note : </b>This calculation is based on the above factors only. The consumption of water may vary if more factors are added.</p>
+                                    </div>
+                                </div>
+</form>
+                    </div>
+                </div>
+                <div class="col-lg-6 background order-lg-2 order-1" data-aos="fade-left" data-aos-delay="100"></div>
+            </div>
+        </div>
+    </section>
+    <!-- ======= End Water Footprint ======= -->
+</main>
+
+<!-- ======= Footer ======= -->
+<footer id="footer"></footer><!-- End Footer -->
+
+<a href="#" class="back-to-top"><i class="fa fa-chevron-up"></i></a>

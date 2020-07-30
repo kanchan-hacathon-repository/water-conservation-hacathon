@@ -1,0 +1,183 @@
+﻿@using WaterConservation.Entities
+@model List<WaterConservation.Entities.NewsItem>
+@{
+    ViewBag.Title = "Index";
+}
+
+<!-- ======= Header ======= -->
+<header id="header" class="header-transparent">
+    <div class="container">
+
+        <div id="logo" class="pull-left">
+        </div>
+
+        <nav id="nav-menu-container">
+            <ul class="nav-menu">
+                <li><a href="~/Home">Home</a></li>
+                <li><a href="#news">News Feed</a></li>
+                <li><a href="~/NormalHousehold">Water Harvest</a></li>
+                <li><a href="~/WaterFootprint">Water Footprint</a></li>
+                <li><a href="~/Prediction">Water Prediction Model</a></li>
+                <li class="menu-has-children">
+                    <a href="#">FAQs</a>
+                    <ul>
+                        <li><a href="~/Facts">Facts</a></li>
+                        <li><a href="~/Facts/WaterBorneDisease">Water Borne Disease</a></li>
+                    </ul>
+                </li>
+                <li><a href="~/Home#team">Team</a></li>
+            </ul>
+        </nav><!-- #nav-menu-container -->
+    </div>
+</header><!-- End Header -->
+<!-- ======= Hero Section ======= -->
+<section id="hero">
+    <div class="hero-container" data-aos="zoom-in" data-aos-delay="100">
+        <h1><span id="greetingmessage"></span></h1>
+        <h2>Welcome to Water Conservation Application</h2>
+        <h3>About this Website</h3>
+        <h6>
+            <div>Get latest news feed on water conservation</div>
+            <div>Calculate Rain Water Harvesting by Catchment Area</div>
+            <div>Calculate your daily water use</div>
+            <div>Get insights on year on year ground water level depletion</div>
+            <div>Get to know about Facts VS Myths about water consumption</div>
+        </h6>
+        <a href="#news" class="btn-get-started">News Feed</a>
+
+    </div>
+</section><!-- End Hero Section -->
+
+<main id="main">
+    <!-- ======= About Section ======= -->
+    <section id="news">
+        <div class="container" data-aos="fade-up">
+            <div class="row about-container">
+
+                <div class="col-lg-12 content order-lg-1 order-2">
+                    <h1></h1>
+                    <h2 class="title">News Feed</h2>
+                    <p>
+                        Find below the latest news on Water Conservation
+                    </p>
+                    @foreach (var item in ViewBag.NewsItems)
+                    {
+                        <div class="icon-box" data-aos="fade-up" data-aos-delay="100">
+                            <h4 class="title"><a href="@item.Link" target="_blank">@item.Title</a></h4>
+                            <p class="description">Publish Date : @item.PubDate</p>
+                        </div>
+                    }
+
+                </div>
+
+                <div class="col-lg-6 background order-lg-2 order-1" data-aos="fade-left" data-aos-delay="100"></div>
+            </div>
+
+        </div>
+    </section>
+    <!-- End About Section -->
+</main><!-- End #main -->
+
+<!-- ======= Team Section ======= -->
+<section id="team">
+    <div class="container" data-aos="fade-up">
+        <div class="section-header">
+            <h3 class="section-title">Team</h3>
+            <p class="section-description">Please find below the team structure working for the Call for Code Program.</p>
+        </div>
+        <div class="row">
+            <div class="col-lg-3 col-md-6">
+                <div class="member" data-aos="fade-up" data-aos-delay="100">
+                    <div class="pic"><img src="~/assets/img/Brijesh Da.jpg" alt=""></div>
+                    <h4>Brijesh Chandra Das</h4>
+                    <span>Delivery Manager</span>
+                    <div class="social">
+                        <a href=""><i class="fa fa-twitter"></i></a>
+                        <a href=""><i class="fa fa-facebook"></i></a>
+                        <a href=""><i class="fa fa-google-plus"></i></a>
+                        <a href=""><i class="fa fa-linkedin"></i></a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-3 col-md-6">
+                <div class="member" data-aos="fade-up" data-aos-delay="200">
+                    <div class="pic"><img src="~/assets/img/Soumik.jpg" alt=""></div>
+                    <h4>Soumik Kundu</h4>
+                    <span>Senior Lead Developer</span>
+                    <div class="social">
+                        <a href=""><i class="fa fa-twitter"></i></a>
+                        <a href=""><i class="fa fa-facebook"></i></a>
+                        <a href=""><i class="fa fa-google-plus"></i></a>
+                        <a href=""><i class="fa fa-linkedin"></i></a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-3 col-md-6">
+                <div class="member" data-aos="fade-up" data-aos-delay="300">
+                    <div class="pic"><img src="~/assets/img/Kanchan.jpg" alt=""></div>
+                    <h4>Kanchan Ghosh</h4>
+                    <span>Senior Developer</span>
+                    <div class="social">
+                        <a href=""><i class="fa fa-twitter"></i></a>
+                        <a href=""><i class="fa fa-facebook"></i></a>
+                        <a href=""><i class="fa fa-google-plus"></i></a>
+                        <a href=""><i class="fa fa-linkedin"></i></a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-3 col-md-6">
+                <div class="member" data-aos="fade-up" data-aos-delay="400">
+                    <div class="pic"><img src="~/assets/img/Saptarshi.jpg" alt=""></div>
+                    <h4>Saptarshi Goswami</h4>
+                    <span>Developer</span>
+                    <div class="social">
+                        <a href=""><i class="fa fa-twitter"></i></a>
+                        <a href=""><i class="fa fa-facebook"></i></a>
+                        <a href=""><i class="fa fa-google-plus"></i></a>
+                        <a href=""><i class="fa fa-linkedin"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</section><!-- End Team Section -->
+<!-- ======= Footer ======= -->
+<footer id="footer"></footer><!-- End Footer -->
+
+<a href="#" class="back-to-top"><i class="fa fa-chevron-up"></i></a>
+
+<script typeof="text/javascript">
+    $body = $("body");
+
+    $(document).ready(function () {
+        getGreetingMessage();
+    });
+
+    function getGreetingMessage() {
+        var currentTime = new Date().toString().split("GMT")[0];
+        $.ajax({
+            url: 'Home/GetGreetingMessage',
+            dataType: 'json',
+            data: { currentTime },
+            type: 'GET',
+            beforeSend: function () { $body.addClass("loading"); },
+            success: function (data) {
+                setTimeout(function () {
+                    $("#greetingmessage").text(data.substr(1).slice(0, -1));
+                    $body.removeClass("loading");
+                }, 500);
+            },
+            error: function (xhr, status, error) {
+                var errorMessage = xhr.status + ': ' + xhr.statusText;
+                console.log('Error - ' + errorMessage);
+                $body.removeClass("loading");
+            }
+        });
+    }
+
+</script>
+

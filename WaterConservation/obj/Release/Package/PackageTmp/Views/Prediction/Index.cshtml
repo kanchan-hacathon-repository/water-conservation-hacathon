@@ -1,0 +1,283 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+
+<!-- ======= Header ======= -->
+<header id="header" class="header">
+    <div class="container">
+
+        <div id="logo" class="pull-left">
+        </div>
+
+        <nav id="nav-menu-container">
+            <ul class="nav-menu">
+                <li><a href="~/Home">Home</a></li>
+                <li><a href="~/Home#news">News Feed</a></li>
+                <li><a href="~/NormalHousehold">Water Harvest</a></li>
+                <li><a href="~/WaterFootprint">Water Footprint</a></li>
+                <li><a href="~/Prediction">Water Prediction Model</a></li>
+                <li class="menu-has-children">
+                    <a href="#">FAQs</a>
+                    <ul>
+                        <li><a href="~/Facts">Facts</a></li>
+                        <li><a href="~/Facts/WaterBorneDisease">Water Borne Disease</a></li>
+                    </ul>
+                </li>
+                <li><a href="~/Home#team">Team</a></li>
+            </ul>
+        </nav><!-- #nav-menu-container -->
+    </div>
+</header><!-- End Header -->
+
+<main id="main">
+    <section id="rainharvest">
+        <div class="container" data-aos="fade-up">
+            <div class="row about-container">
+                <div class="col-lg-12 content order-lg-1 order-2">
+                    <h1></h1>
+                    <div class="col-lg12 content order-lg-1 order-2">
+                        <div class="section-header">
+                            <h1 class="section-title">Prediction of Ground Water Level</h1>
+                            <p>
+                                Groundwater depletion has been a concern in India for many years,
+                                but increased demands on our groundwater resources have overstressed aquifers in many areas of the Nation, not just in arid regions.
+                                By looking at the chart we can understand how Ground Water is declining on Year on Year basis which is of great concern!
+                            </p>
+                        </div>
+                        <h1></h1>
+                        <h1></h1>
+                        <div class="form-row">
+                            <div class="form-group col-md-8">
+                                <center>
+                                    <h5 id="districtwisestorage-heading" style="display:none;">Year on Year Ground Water Depletion average per State in India</h5>
+                                </center>
+
+                                <canvas id="myChartStorage"></canvas>
+                            </div>
+                            <div class="form-group col-md-4">
+                                <h1></h1>
+                                <center>
+                                    <span>
+                                        Now that we can see the declining water storage in our Country, it's high time for us to understand our Water Foorprint
+                                        and how to harvest rain water. Please click the below links to view them.
+                                    </span>
+                                </center>
+                                <h1></h1>
+                                <center>
+                                    <a href="~/NormalHousehold" class="btn btn-primary">Rain Water Harvest</a>
+                                    <a href="~/WaterFootprint" class="btn btn-primary">Water Footprint</a>
+                                </center>
+                                <h1></h1>
+                                <h1></h1>
+                                <p>You can also view recharge and extraction of ground water for a State</p>
+                                <center>
+                                    <div>
+                                        <a href="#districtValue" class="btn btn-primary">View State Wise Data</a>
+                                    </div>
+                                </center>
+
+                                <canvas id="myChartStorage"></canvas>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="districtValue" class="col-lg-12 content order-lg-1 order-2">
+                        <div class="section-header">
+                            <h1 class="section-title">District wise water Recharge and Extraction</h1>
+                            <center>
+                                <p>
+                                    Please select a state to view graphs that shows the recharge and extraction of ground water for a state per district.
+                                </p>
+                            </center>
+                        </div>
+                        <center>
+                            @Html.DropDownList("States", (List<SelectListItem>)ViewBag.States, "Select State")
+                        </center>
+                        <h1></h1>
+                        <h1></h1>
+                        <div class="row content order-lg-1 order-2">
+                            <div class="col-lg-6 content order-lg-1 order-2">
+                                <h5 id="districtwiserecharge-heading" style="display:none;">District wise water recharge of <span id="statename-recharge"></span></h5>
+                                <canvas id="myChartRecharge"></canvas>
+                            </div>
+                            <div class="col-lg-6 content order-lg-1 order-2">
+                                <h5 id="districtwiseextraction-heading" style="display:none;">District wise water extraction of <span id="statename-extraction"></span></h5>
+                                <canvas id="myChartExtraction"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="modal"></div>
+</main><!-- End #main -->
+<!-- ======= Footer ======= -->
+<footer id="footer"></footer><!-- End Footer -->
+
+<a href="#" class="back-to-top"><i class="fa fa-chevron-up"></i></a>
+
+<script typeof="text/javascript">
+    $body = $("body");
+    var buttonCountryClicked = false;
+
+    $(function () {
+        CountryGroundWaterAvailabilityForFutureUse();
+    });
+
+    $('#States').on("change", function () {
+        var state = $('#States').val();
+        var obj = { state: state };
+
+        LoadGroundWaterRecharge(state, obj);
+
+        LoadGroundWaterExtraction(state, obj);
+    });
+
+    function LoadDistricts(obj) {
+        //load districts
+        AjaxCall('Prediction/GetDistricts', obj, 'GET').done(function (response) {
+            if (response) {
+                setTimeout(function () {
+                    $('#districtDropDownList').html('');
+                    var responseArray = JSON.parse(response);
+                    for (var i = 0; i < responseArray.length; i++) {
+                        if (i == 0) {
+                            $("#districtDropDownList").append(new Option("Select District", "Select District"));
+                        }
+                        var o = new Option(responseArray[i], responseArray[i]);
+                        /// jquerify the DOM object 'o' so we can use the html method
+                        $("#districtDropDownList").append(o);
+                    }
+                }, 1000);
+                $body.removeClass("loading");
+                $("#district-row").css("display", "");
+            }
+        }).fail(function (error) {
+            alert(error.StatusText);
+        });
+    }
+
+    function LoadGroundWaterRecharge(state, obj) {
+        //load district wise ground water recharge
+        AjaxCall('Prediction/LoadDistrictWiseGroundWaterRecharge', obj, 'GET').done(function (response) {
+            if (response) {
+                setTimeout(function () {
+                    $("#statename-recharge").text(state);
+                    $("#districtwiserecharge-heading").css("display", "");
+                    var resultArray = JSON.parse(response);
+                    var districtNameArray = [];
+                    var rechargeArray = [];
+                    $.each(resultArray, function (index, item) {
+                        districtNameArray.push(item.DistrictName);
+                        rechargeArray.push(item.TotalAnnualGroundWaterQuantity);
+                    });
+                    loadChart(districtNameArray, rechargeArray, "myChartRecharge");
+                }, 1000);
+                $body.removeClass("loading");
+            }
+        }).fail(function (error) {
+            alert(error.StatusText);
+        });
+    }
+
+    function LoadGroundWaterExtraction(state, obj) {
+        //load district wise ground water extraction
+        AjaxCall('Prediction/LoadDistrictWiseGroundWaterExtraction', obj, 'GET').done(function (response) {
+            if (response) {
+                setTimeout(function () {
+                    $("#statename-extraction").text(state);
+                    $("#districtwiseextraction-heading").css("display", "");
+                    var resultArray = JSON.parse(response);
+                    var districtNameArray = [];
+                    var extractionArray = [];
+                    $.each(resultArray, function (index, item) {
+                        districtNameArray.push(item.DistrictName);
+                        extractionArray.push(item.TotalAnnualGroundWaterQuantity);
+                    });
+                    loadChart(districtNameArray, extractionArray, "myChartExtraction");
+                }, 2000);
+                $body.removeClass("loading");
+            }
+        }).fail(function (error) {
+            alert(error.StatusText);
+        });
+    }
+
+    function CountryGroundWaterAvailabilityForFutureUse() {
+        //load year wise ground water recharge for country
+        AjaxCall('Prediction/GetCountryGroundWaterAvailabilityForFutureUse', {}, 'GET').done(function (response) {
+            if (response) {
+                setTimeout(function () {
+                    $("#districtwisestorage-heading").css("display", "");
+                    var resultArray = JSON.parse(response);
+                    var StateNameArray = [];
+                    var rechargeArray = [];
+                    $("#btnGetCountryStorageForFuture").hide();
+                    buttonCountryClicked = true;
+                    $.each(resultArray, function (index, item) {
+                        StateNameArray.push(item.Year);
+                        rechargeArray.push(item.AvarageStorage);
+                    });
+                    loadChart(StateNameArray, rechargeArray, "myChartStorage");
+                }, 1000);
+                $body.removeClass("loading");
+            }
+        }).fail(function (error) {
+            alert(error.StatusText);
+        });
+    }
+
+    function AjaxCall(url, data, type) {
+        return $.ajax({
+            url: url,
+            type: type ? type : 'GET',
+            data: data,
+            beforeSend: function () { $body.addClass("loading"); },
+            contentType: 'application/json'
+        });
+    }
+
+    function loadChart(stateOrDistrictNameArray, volumeArray, id) {
+        var ctx = document.getElementById(id).getContext('2d');
+        var myChart = new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: stateOrDistrictNameArray,
+                datasets: [{
+                    label: 'Gallons',
+                    data: volumeArray,
+                    backgroundColor: [
+                        'rgba(255, 99, 132, 0.2)',
+                        'rgba(54, 162, 235, 0.2)',
+                        'rgba(255, 206, 86, 0.2)',
+                        'rgba(75, 192, 192, 0.2)',
+                        'rgba(153, 102, 255, 0.2)',
+                        'rgba(255, 159, 64, 0.2)'
+                    ],
+                    borderColor: [
+                        'rgba(255,99,132,1)',
+                        'rgba(54, 162, 235, 1)',
+                        'rgba(255, 206, 86, 1)',
+                        'rgba(75, 192, 192, 1)',
+                        'rgba(153, 102, 255, 1)',
+                        'rgba(255, 159, 64, 1)'
+                    ],
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                scales: {
+                    yAxes: [{
+                        ticks: {
+                            beginAtZero: true
+                        }
+                    }]
+                }
+            }
+        });
+    }
+
+</script>
