@@ -34,3 +34,15 @@ C:\Kanchan\Hacathon\CodeBase_VersionControl\waterconservation\WaterConservation.
 C:\Kanchan\Hacathon\CodeBase_VersionControl\waterconservation\WaterConservation.DataAccess\obj\Debug\netstandard2.0\WaterConservation.DataAccess.csproj.CopyComplete
 C:\Kanchan\Hacathon\CodeBase_VersionControl\waterconservation\WaterConservation.DataAccess\obj\Debug\netstandard2.0\WaterConservation.DataAccess.dll
 C:\Kanchan\Hacathon\CodeBase_VersionControl\waterconservation\WaterConservation.DataAccess\obj\Debug\netstandard2.0\WaterConservation.DataAccess.pdb
+C:\Kanchan\Hacathon\GitHub\water-conservation-hacathon\WaterConservation.DataAccess\bin\Debug\netstandard2.0\WaterConservation.DataAccess.deps.json
+C:\Kanchan\Hacathon\GitHub\water-conservation-hacathon\WaterConservation.DataAccess\bin\Debug\netstandard2.0\WaterConservation.DataAccess.dll
+C:\Kanchan\Hacathon\GitHub\water-conservation-hacathon\WaterConservation.DataAccess\bin\Debug\netstandard2.0\WaterConservation.DataAccess.pdb
+C:\Kanchan\Hacathon\GitHub\water-conservation-hacathon\WaterConservation.DataAccess\bin\Debug\netstandard2.0\WaterConservation.Entities.dll
+C:\Kanchan\Hacathon\GitHub\water-conservation-hacathon\WaterConservation.DataAccess\bin\Debug\netstandard2.0\WaterConservation.Entities.pdb
+C:\Kanchan\Hacathon\GitHub\water-conservation-hacathon\WaterConservation.DataAccess\obj\Debug\netstandard2.0\WaterConservation.DataAccess.csprojAssemblyReference.cache
+C:\Kanchan\Hacathon\GitHub\water-conservation-hacathon\WaterConservation.DataAccess\obj\Debug\netstandard2.0\WaterConservation.DataAccess.csproj.CoreCompileInputs.cache
+C:\Kanchan\Hacathon\GitHub\water-conservation-hacathon\WaterConservation.DataAccess\obj\Debug\netstandard2.0\WaterConservation.DataAccess.AssemblyInfoInputs.cache
+C:\Kanchan\Hacathon\GitHub\water-conservation-hacathon\WaterConservation.DataAccess\obj\Debug\netstandard2.0\WaterConservation.DataAccess.AssemblyInfo.cs
+C:\Kanchan\Hacathon\GitHub\water-conservation-hacathon\WaterConservation.DataAccess\obj\Debug\netstandard2.0\WaterConservation.DataAccess.csproj.CopyComplete
+C:\Kanchan\Hacathon\GitHub\water-conservation-hacathon\WaterConservation.DataAccess\obj\Debug\netstandard2.0\WaterConservation.DataAccess.dll
+C:\Kanchan\Hacathon\GitHub\water-conservation-hacathon\WaterConservation.DataAccess\obj\Debug\netstandard2.0\WaterConservation.DataAccess.pdb

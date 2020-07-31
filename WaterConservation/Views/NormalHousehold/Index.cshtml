@@ -92,6 +92,14 @@
                             </tbody>
                         </table>
                     </div>
+
+                    <div id="harvestmeter" class="section-header" style="display:none;">
+                        <h3 class="section-title">Your Rain Harvest Meter</h3>
+                        <p class="section-description">
+                            The graphical meter reflects the volume of rain water that can be stored according to your catchment parameters. Plan your water reservoir accordingly!!
+                        </p>
+                    </div>
+
                     <div class="col-lg-12 content order-lg-1 order-2">
                         <canvas id="myChart"></canvas>
                     </div>
@@ -198,6 +206,7 @@
                     harvestArray.push(item.Harvest);
                 });
                 setTimeout(function () {
+                    $("#harvestmeter").show();
                     loadChart(rainfallArray, harvestArray);
                     $body.removeClass("loading");
                 }, 500);

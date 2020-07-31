@@ -40,3 +40,17 @@ C:\Kanchan\Hacathon\CodeBase_VersionControl\waterconservation\WaterConservation.
 C:\Kanchan\Hacathon\CodeBase_VersionControl\waterconservation\WaterConservation.BusinessLogic\obj\Debug\netstandard2.0\WaterConservation.BusinessLogic.csproj.CopyComplete
 C:\Kanchan\Hacathon\CodeBase_VersionControl\waterconservation\WaterConservation.BusinessLogic\obj\Debug\netstandard2.0\WaterConservation.BusinessLogic.dll
 C:\Kanchan\Hacathon\CodeBase_VersionControl\waterconservation\WaterConservation.BusinessLogic\obj\Debug\netstandard2.0\WaterConservation.BusinessLogic.pdb
+C:\Kanchan\Hacathon\GitHub\water-conservation-hacathon\WaterConservation.BusinessLogic\bin\Debug\netstandard2.0\WaterConservation.BusinessLogic.deps.json
+C:\Kanchan\Hacathon\GitHub\water-conservation-hacathon\WaterConservation.BusinessLogic\bin\Debug\netstandard2.0\WaterConservation.BusinessLogic.dll
+C:\Kanchan\Hacathon\GitHub\water-conservation-hacathon\WaterConservation.BusinessLogic\bin\Debug\netstandard2.0\WaterConservation.BusinessLogic.pdb
+C:\Kanchan\Hacathon\GitHub\water-conservation-hacathon\WaterConservation.BusinessLogic\bin\Debug\netstandard2.0\WaterConservation.DataAccess.dll
+C:\Kanchan\Hacathon\GitHub\water-conservation-hacathon\WaterConservation.BusinessLogic\bin\Debug\netstandard2.0\WaterConservation.Entities.dll
+C:\Kanchan\Hacathon\GitHub\water-conservation-hacathon\WaterConservation.BusinessLogic\bin\Debug\netstandard2.0\WaterConservation.DataAccess.pdb
+C:\Kanchan\Hacathon\GitHub\water-conservation-hacathon\WaterConservation.BusinessLogic\bin\Debug\netstandard2.0\WaterConservation.Entities.pdb
+C:\Kanchan\Hacathon\GitHub\water-conservation-hacathon\WaterConservation.BusinessLogic\obj\Debug\netstandard2.0\WaterConservation.BusinessLogic.csprojAssemblyReference.cache
+C:\Kanchan\Hacathon\GitHub\water-conservation-hacathon\WaterConservation.BusinessLogic\obj\Debug\netstandard2.0\WaterConservation.BusinessLogic.csproj.CoreCompileInputs.cache
+C:\Kanchan\Hacathon\GitHub\water-conservation-hacathon\WaterConservation.BusinessLogic\obj\Debug\netstandard2.0\WaterConservation.BusinessLogic.AssemblyInfoInputs.cache
+C:\Kanchan\Hacathon\GitHub\water-conservation-hacathon\WaterConservation.BusinessLogic\obj\Debug\netstandard2.0\WaterConservation.BusinessLogic.AssemblyInfo.cs
+C:\Kanchan\Hacathon\GitHub\water-conservation-hacathon\WaterConservation.BusinessLogic\obj\Debug\netstandard2.0\WaterConservation.BusinessLogic.csproj.CopyComplete
+C:\Kanchan\Hacathon\GitHub\water-conservation-hacathon\WaterConservation.BusinessLogic\obj\Debug\netstandard2.0\WaterConservation.BusinessLogic.dll
+C:\Kanchan\Hacathon\GitHub\water-conservation-hacathon\WaterConservation.BusinessLogic\obj\Debug\netstandard2.0\WaterConservation.BusinessLogic.pdb

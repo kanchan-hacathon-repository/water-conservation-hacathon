@@ -25,3 +25,12 @@ C:\Kanchan\Hacathon\CodeBase_VersionControl\waterconservation\WaterConservation.
 C:\Kanchan\Hacathon\CodeBase_VersionControl\waterconservation\WaterConservation.Entities\obj\Debug\netstandard2.0\WaterConservation.Entities.AssemblyInfo.cs
 C:\Kanchan\Hacathon\CodeBase_VersionControl\waterconservation\WaterConservation.Entities\obj\Debug\netstandard2.0\WaterConservation.Entities.dll
 C:\Kanchan\Hacathon\CodeBase_VersionControl\waterconservation\WaterConservation.Entities\obj\Debug\netstandard2.0\WaterConservation.Entities.pdb
+C:\Kanchan\Hacathon\GitHub\water-conservation-hacathon\WaterConservation.Entities\bin\Debug\netstandard2.0\WaterConservation.Entities.deps.json
+C:\Kanchan\Hacathon\GitHub\water-conservation-hacathon\WaterConservation.Entities\bin\Debug\netstandard2.0\WaterConservation.Entities.dll
+C:\Kanchan\Hacathon\GitHub\water-conservation-hacathon\WaterConservation.Entities\bin\Debug\netstandard2.0\WaterConservation.Entities.pdb
+C:\Kanchan\Hacathon\GitHub\water-conservation-hacathon\WaterConservation.Entities\obj\Debug\netstandard2.0\WaterConservation.Entities.csprojAssemblyReference.cache
+C:\Kanchan\Hacathon\GitHub\water-conservation-hacathon\WaterConservation.Entities\obj\Debug\netstandard2.0\WaterConservation.Entities.csproj.CoreCompileInputs.cache
+C:\Kanchan\Hacathon\GitHub\water-conservation-hacathon\WaterConservation.Entities\obj\Debug\netstandard2.0\WaterConservation.Entities.AssemblyInfoInputs.cache
+C:\Kanchan\Hacathon\GitHub\water-conservation-hacathon\WaterConservation.Entities\obj\Debug\netstandard2.0\WaterConservation.Entities.AssemblyInfo.cs
+C:\Kanchan\Hacathon\GitHub\water-conservation-hacathon\WaterConservation.Entities\obj\Debug\netstandard2.0\WaterConservation.Entities.dll
+C:\Kanchan\Hacathon\GitHub\water-conservation-hacathon\WaterConservation.Entities\obj\Debug\netstandard2.0\WaterConservation.Entities.pdb
